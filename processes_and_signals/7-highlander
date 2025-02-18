@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Function to handle SIGTERM signal
+# This script prints "To infinity and beyond" every 2 seconds, and prints "I am invincible!!!" when receiving a SIGTERM signal.
+
+# Trap SIGTERM signal and print a message
 trap 'echo "I am invincible!!!"' SIGTERM
 
-# Infinite loop to print "To infinity and beyond"
+# Infinite loop to print "To infinity and beyond" with a sleep of 2 seconds
 while true
 do
     echo "To infinity and beyond"

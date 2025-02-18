@@ -1,15 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Find the PID of the 4-to_infinity_and_beyond process
-PID=$(ps aux | grep '4-to_infinity_and_beyond' | grep -v grep | awk '{print $2}')
+# This script prints "To infinity and beyond" every 2 seconds, and prints "I am invincible!!!" when receiving a SIGTERM signal.
 
-# Ensure that the process ID was found
-if [ -z "$PID" ]; then
-    echo "Process not found!"
-    exit 1
-fi
+# Trap SIGTERM signal and print a message
+trap 'echo "I am invincible!!!"' SIGTERM
 
-# Wait for the process to finish or terminate it
-# A simpler approach without kill is to stop the script via waiting on the process
-wait $PID
-echo "Process $PID terminated successfully"
+# Infinite loop to print "To infinity and beyond" with a sleep of 2 seconds
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
