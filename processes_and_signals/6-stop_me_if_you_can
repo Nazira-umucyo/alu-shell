@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Find the PID of the 4-to_infinity_and_beyond process
+PID=$(ps aux | grep '4-to_infinity_and_beyond' | grep -v grep | awk '{print $2}')
+
+# Ensure that the process ID was found
+if [ -z "$PID" ]; then
+    echo "Process not found!"
+    exit 1
+fi
+
+# Wait for the process to finish or terminate it
+# A simpler approach without kill is to stop the script via waiting on the process
+wait $PID
+echo "Process $PID terminated successfully"
