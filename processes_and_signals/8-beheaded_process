@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# This script kills the 7-highlander process
+
+# Find the PID of the 7-highlander process
+PID=$(ps aux | grep '[7]-highlander' | awk '{print $2}')
+
+# Ensure the PID was found
+if [ -z "$PID" ]; then
+    echo "Process not found!"
+    exit 1
+fi
+
+# Kill the process
+kill $PID
+echo "Killed"
